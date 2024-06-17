@@ -14,4 +14,4 @@ Route::get('/projects', function () {
 
 Route::get('/blog/', [BlogController::class, 'show'])->name('blog');
 
-Route::get('/blog/{blogid}', [BlogController::class, 'view'])->name('blogpage');
+Route::get('/blog/{blogid}', [BlogController::class, 'view'])->name('blog.show');
