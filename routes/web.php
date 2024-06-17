@@ -12,4 +12,6 @@ Route::get('/projects', function () {
     return Inertia::render('Projects');
 })->name('projects');
 
-Route::get('/blog/:blogid', [BlogController::class, 'show'])->name('blog');
+Route::get('/blog/', [BlogController::class, 'show'])->name('blog');
+
+Route::get('/blog/{blogid}', [BlogController::class, 'view'])->name('blogpage');
