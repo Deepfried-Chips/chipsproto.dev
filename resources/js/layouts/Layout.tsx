@@ -14,7 +14,10 @@ export default function Layout({ children }: PropsWithChildren) {
                     </Link>
                     <ul className="flex space-x-4 mr-6 text-lg">
                         <li>
-                            <a href={route('projects')}>Projects</a>
+                            <Link href={route('projects')}>Projects</Link>
+                        </li>
+                        <li>
+                            <Link href={route('blog')}>Blog</Link>
                         </li>
                     </ul>
                 </nav>
