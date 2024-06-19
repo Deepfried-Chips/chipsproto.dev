@@ -36,6 +36,6 @@ class OAuthController extends Controller
     {
         Auth::guard('web')->logout();
 
-        return redirect(route('home'));
+        return redirect(route('blog'));
     }
 }
