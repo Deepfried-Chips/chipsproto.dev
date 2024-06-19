@@ -34,12 +34,12 @@ class OAuthController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect(route('blog'));
+        return redirect(route('home'));
     }
 }
