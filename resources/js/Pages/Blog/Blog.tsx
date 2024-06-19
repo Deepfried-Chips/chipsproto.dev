@@ -1,10 +1,13 @@
-import Layout from "@/layouts/Layout";
+import BlogLayout from "@/Components/Blog/BlogLayout";
 import {Head} from "@inertiajs/react";
+import {PageProps} from "@/types";
 
-export default function Blog() {
+export default function Blog({auth}: PageProps) {
     return (
-        <Layout>
+        <BlogLayout
+            user={auth?.user}
+        >
             <Head title="Blog"/>
-        </Layout>
+        </BlogLayout>
     )
 }

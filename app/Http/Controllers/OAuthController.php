@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class OAuthController extends Controller
@@ -19,12 +20,14 @@ class OAuthController extends Controller
     {
         $githubUser = Socialite::driver('github')->user();
 
-        $user = User::findOrCreate([
+        $user = User::updateOrCreate([
             'github_id' => $githubUser->id,
         ], [
             'name' => $githubUser->nickname,
             'avatar' => $githubUser->avatar,
         ]);
+
+        Auth::login($user);
 
         return redirect(route('blog'));
     }
