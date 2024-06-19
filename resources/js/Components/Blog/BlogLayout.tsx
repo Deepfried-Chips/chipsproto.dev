@@ -2,7 +2,7 @@ import React, {PropsWithChildren, useState, MouseEvent} from 'react';
 import {User} from "@/types";
 import Layout from '@/layouts/Layout';
 import {Avatar, Menu, MenuItem} from "@mui/material";
-import {router, useForm} from "@inertiajs/react";
+import {Link, useForm} from "@inertiajs/react";
 
 export default function BlogLayout({user, children}: PropsWithChildren<{user: User}>) {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -33,6 +33,7 @@ export default function BlogLayout({user, children}: PropsWithChildren<{user: Us
                         )}
                         {user && (
                             <>
+                                <Link href={route('admin')} className="rainbow-text">Super secret admin panel</Link>
                                 <Avatar alt="Profile pic" src={user.avatar} onClick={handleClick}/>
                                 <Menu
                                     anchorEl={anchorEl}

@@ -11,3 +11,16 @@
 a {
     @apply hover:text-blue-500 hover:underline;
 }
+
+@keyframes rainbow {
+    0% {color: red;}
+    42% {color: lime;}
+    57% {color: blue;}
+    71% {color: indigo;}
+    85% {color: violet;}
+    100% {color: red;}
+}
+
+.rainbow-text {
+    animation: rainbow 3s linear infinite;
+}
