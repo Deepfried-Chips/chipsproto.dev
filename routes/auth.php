@@ -18,5 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])
             ->name('admin');
+
+        Route::get('edit/{id}', [AdminController::class, 'edit'])
+            ->name('admin.edit');
     });
 });

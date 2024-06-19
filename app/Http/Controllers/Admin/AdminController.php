@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,6 +17,8 @@ class AdminController extends Controller
         if($request->user()->is_admin === false) {
             abort(403);
         }
-        return Inertia::render('Admin/Admin');
+        return Inertia::render('Admin/Admin', [
+            'posts' => Posts::all(),
+        ]);
     }
 }

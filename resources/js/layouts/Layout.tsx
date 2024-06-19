@@ -42,7 +42,7 @@ export default function Layout({ children, header }: PropsWithChildren<{ header?
                     </div>
                 </nav>
 
-                <main className="p-4 w-full overflow-visible h-screen">
+                <main className="p-4 w-full overflow-auto h-screen">
                     {header && (
                         <header>
                             <div className="flex flex-col items-center mt-1">
