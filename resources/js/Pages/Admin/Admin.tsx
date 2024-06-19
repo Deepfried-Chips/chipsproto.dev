@@ -26,7 +26,7 @@ export default function Admin({auth, posts}: PageProps<{posts: Post[]}>) {
                         ))}
                     </div>
                     <div className="mb-4 flex flex-row justify-center">
-                        <Button href={route('admin.edit', post?.id)}>EDIT</Button>
+                        <Button href={route('admin.edit', post?.id || 0)}>EDIT</Button>
                         <Button href={route('admin')}>NEW</Button>
                     </div>
                 </div>
