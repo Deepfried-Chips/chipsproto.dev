@@ -6,7 +6,7 @@ import {router, useForm} from "@inertiajs/react";
 
 export default function BlogLayout({user, children}: PropsWithChildren<{user: User}>) {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const { post, processing} = useForm();
+    const { get, processing} = useForm();
 
     const handleClick = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -17,7 +17,7 @@ export default function BlogLayout({user, children}: PropsWithChildren<{user: Us
     };
 
     const handleLogout = () => {
-        post(route('logout'))
+        get(route('logout'))
         handleClose()
     };
 
