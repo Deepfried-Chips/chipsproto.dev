@@ -15,6 +15,7 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+        <a rel="me" href="https://protogen.social/@DeepfriedChips"></a>
         @inertia
     </body>
 </html>
