@@ -7,7 +7,11 @@ import ProjectCard from "@/Components/ProjectCard";
 export default function Projects() {
 
     return (
-        <Layout>
+        <Layout
+            header={
+                <h1 className="text-3xl font-bold">Projects</h1>
+            }
+        >
             <Head title="Projects"/>
             <ProjectCard
                 title={<a href="https://youtube.com/watch?v=dQw4w9WgXcQ">chipsproto.dev</a>}
