@@ -1,9 +1,26 @@
-import React, {PropsWithChildren} from 'react';
+import React, {PropsWithChildren, useState, MouseEvent} from 'react';
 import {User} from "@/types";
 import Layout from '@/layouts/Layout';
-import {Avatar} from "@mui/material";
+import {Avatar, Menu, MenuItem} from "@mui/material";
+import {router, useForm} from "@inertiajs/react";
 
 export default function BlogLayout({user, children}: PropsWithChildren<{user: User}>) {
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const { get, processing} = useForm();
+
+    const handleClick = (event: MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleLogout = () => {
+        get(route('logout'))
+        router.reload()
+        handleClose()
+    };
 
     return (
         <Layout
@@ -16,7 +33,20 @@ export default function BlogLayout({user, children}: PropsWithChildren<{user: Us
                             <a href={route('github.redirect')}>Login</a>
                         )}
                         {user && (
-                            <Avatar alt="Profile pic" src={user.avatar}/>
+                            <>
+                                <Avatar alt="Profile pic" src={user.avatar} onClick={handleClick}/>
+                                <Menu
+                                    anchorEl={anchorEl}
+                                    keepMounted
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                    sx={{
+                                        '.MuiPaper-root': { bgcolor: 'rgb(249 115 22)', color: 'black'}
+                                    }}
+                                >
+                                    <MenuItem disabled={processing} onClick={handleLogout} sx={{bgcolor: 'rgb(249 115 22)', color: 'black'}}>Logout</MenuItem>
+                                </Menu>
+                            </>
                         )}
                     </div>
                 </div>
