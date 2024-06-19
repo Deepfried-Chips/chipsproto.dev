@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 interface ProjectCardProps {
-    title: string;
-    description: string;
+    title: ReactNode;
+    description: ReactNode;
+    imageAlt?: string;
     imageUrl: string;
+    className?: string
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl, imageAlt, className }) => {
     return (
-        <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-4 bg-gradient-to-bl from-orange-500 to-purple-300 p-8 rounded-lg shadow-md mt-5">
-            <img src={imageUrl} alt={title} className="w-48 h-48 object-cover mr-10" />
+        <div className={`flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-4 bg-gradient-to-bl from-orange-500 to-purple-300 p-8 rounded-lg shadow-md mt-5 ${className}`}>
+            <img src={imageUrl} alt={imageAlt} className="w-48 h-48 object-cover mr-10" />
             <div>
                 <h2 className="text-xl font-bold">{title}</h2>
                 <p>{description}</p>

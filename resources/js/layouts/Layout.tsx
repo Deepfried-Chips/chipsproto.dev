@@ -1,9 +1,9 @@
-import {PropsWithChildren} from "react";
+import {PropsWithChildren, ReactNode} from "react";
 import {Link} from "@inertiajs/react";
 import chipsblankie from "@/images/chipsblankie.png"
 import { route } from "ziggy-js";
 
-export default function Layout({ children }: PropsWithChildren) {
+export default function Layout({ children, header }: PropsWithChildren<{ header?: ReactNode }>) {
     return (
         <>
             <div className="flex justify-between">
@@ -40,6 +40,13 @@ export default function Layout({ children }: PropsWithChildren) {
                 </nav>
 
                 <main className="p-4 w-full overflow-auto h-screen">
+                    {header && (
+                        <header>
+                            <div className="flex flex-col items-center mt-1">
+                                {header}
+                            </div>
+                        </header>
+                    )}
                     {children}
                 </main>
             </div>

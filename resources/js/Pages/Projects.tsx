@@ -10,12 +10,12 @@ export default function Projects() {
         <Layout>
             <Head title="Projects"/>
             <ProjectCard
-                title="chipsproto.dev"
+                title={<a href="https://youtube.com/watch?v=dQw4w9WgXcQ">chipsproto.dev</a>}
                 description="This website!"
                 imageUrl={chipsblankie}
             />
             <ProjectCard
-                title="protogen.social"
+                title={<a href="https://protogen.social/@DeepfriedChips">protogen.social</a>}
                 description="Small mastodon instance with a protogen mascot but welcome to any group of people"
                 imageUrl={protogensocial}
             />
