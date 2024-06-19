@@ -38,7 +38,7 @@ export default function Layout({ children, header }: PropsWithChildren<{ header?
                     </div>
                     <div className="p-4 flex flex-row space-x-4">
                         <a rel="me" href="https://protogen.social/@DeepfriedChips"><SiMastodon color="#6364FF"/></a>
-                        <a rel="me" href="https://twitch.tv/deepfriedchips"><SiTwitch color="#9146FF"/></a>
+                        <a rel="me" href="https://twitch.tv/deepfried_chips"><SiTwitch color="#9146FF"/></a>
                     </div>
                 </nav>
 
