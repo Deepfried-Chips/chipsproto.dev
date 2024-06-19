@@ -22,7 +22,7 @@ export default function Admin({auth, posts}: PageProps<{posts: Post[]}>) {
                 <div className="w-1/6 h-full bg-orange-500 rounded-lg mr-2 flex flex-col justify-between text-black">
                     <div className="overflow-auto flex justify-center items-center h-screen text-2xl font-bold">
                         {posts.map((post) => (
-                            <Button key={post.id} value={post.id} onClick={handleClick}>{post.title}</Button>
+                            <Button value={post.id} onClick={handleClick}>{post.title}</Button>
                         ))}
                     </div>
                     <div className="mb-4 flex flex-row justify-center">
