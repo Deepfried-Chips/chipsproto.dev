@@ -1,6 +1,7 @@
 import {PropsWithChildren, ReactNode} from "react";
 import {Link} from "@inertiajs/react";
 import chipsblankie from "@/images/chipsblankie.png"
+import { SiMastodon, SiTwitch } from "@icons-pack/react-simple-icons";
 import { route } from "ziggy-js";
 
 export default function Layout({ children, header }: PropsWithChildren<{ header?: ReactNode }>) {
@@ -35,7 +36,9 @@ export default function Layout({ children, header }: PropsWithChildren<{ header?
                             </span>
                         </Link>
                     </div>
-                    <div className="p-4">
+                    <div className="p-4 flex flex-row space-x-4">
+                        <a rel="me" href="https://protogen.social/@DeepfriedChips"><SiMastodon color="#6364FF"/></a>
+                        <a rel="me" href="https://twitch.tv/deepfriedchips"><SiTwitch color="#9146FF"/></a>
                     </div>
                 </nav>
 
