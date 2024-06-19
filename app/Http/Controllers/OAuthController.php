@@ -20,7 +20,10 @@ class OAuthController extends Controller
         $githubUser = Socialite::driver('github')->user();
 
         $user = User::findOrCreate([
-            'github_id'
+            'github_id' => $githubUser->id,
+        ], [
+            'name' => $githubUser->nickname,
+            'avatar' => $githubUser->avatar,
         ]);
 
         return redirect(route('blog'));
