@@ -5,27 +5,44 @@ import { route } from "ziggy-js";
 
 export default function Layout({ children }: PropsWithChildren) {
     return (
-        <main className="flex-col flex">
-            <header className="flex justify-center ">
+        <>
+            <div className="flex justify-between">
                 <nav
-                    className="flex items-center mb-4 space-x-4 pr-5 rounded-full bg-gradient-to-tr from-yellow-500 to-orange-500">
-                    <Link href={route('home')}>
-                        <img className="ml-4 w-12" src={chipsblankie} alt="Site logo"/>
-                    </Link>
-                    <ul className="flex space-x-4 mr-6 text-lg">
-                        <li>
-                            <Link href={route('projects')}>Projects</Link>
-                        </li>
-                        <li>
-                            <Link href={route('blog')}>Blog</Link>
-                        </li>
-                    </ul>
+                    className="h-screen overflow-auto text-black flex flex-col items-center w-64 bg-gradient-to-tr from-yellow-300 from-5% to-orange-500">
+                    <img src={chipsblankie} alt="Logo" className="w-40 mt-2" />
+                    <div className="flex flex-col items-center justify-center h-full">
+                        <Link
+                            className="p-4 flex flex-row items-center"
+                            href={route('home')}>
+                            <span>
+                                Home
+                            </span>
+                        </Link>
+                        <Link
+                            className="p-4 flex flex-row items-center"
+                            href={route('blog')}
+                        >
+                            <span>
+                                Blog
+                            </span>
+                        </Link>
+                        <Link
+                            className="p-4 flex flex-row items-center"
+                            href={route('projects')}
+                        >
+                            <span>
+                                Projects
+                            </span>
+                        </Link>
+                    </div>
+                    <div className="p-4">
+                    </div>
                 </nav>
-            </header>
-            <article className="justify-center items-center text-center p-8 m-auto">
-                {children}
-            </article>
-        </main>
 
+                <main className="p-4 w-full overflow-auto h-screen">
+                    {children}
+                </main>
+            </div>
+        </>
     )
 }
