@@ -6,9 +6,9 @@ import { route } from "ziggy-js";
 export default function Layout({ children }: PropsWithChildren) {
     return (
         <main className="flex-col flex">
-            <header className="flex justify-center">
+            <header className="flex justify-center ">
                 <nav
-                    className="flex items-center mb-4 space-x-4 rounded-full bg-gradient-to-tr from-yellow-500 to-orange-500">
+                    className="flex items-center mb-4 space-x-4 pr-5 rounded-full bg-gradient-to-tr from-yellow-500 to-orange-500">
                     <Link href={route('home')}>
                         <img className="ml-4 w-12" src={chipsblankie} alt="Site logo"/>
                     </Link>
