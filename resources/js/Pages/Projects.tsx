@@ -1,5 +1,6 @@
 import Layout from "@/layouts/Layout";
 import {Head} from "@inertiajs/react";
+import React from "react";
 import chipsblankie from "@/images/chipsblankie.png";
 import protogensocial from "@/images/protogensocial-logosmall.png"
 import ProjectCard from "@/Components/ProjectCard";

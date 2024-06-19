@@ -1,4 +1,4 @@
-import {PropsWithChildren, ReactNode} from "react";
+import React, {PropsWithChildren, ReactNode} from "react";
 import {Link} from "@inertiajs/react";
 import chipsblankie from "@/images/chipsblankie.png"
 import { SiMastodon, SiTwitch } from "@icons-pack/react-simple-icons";
