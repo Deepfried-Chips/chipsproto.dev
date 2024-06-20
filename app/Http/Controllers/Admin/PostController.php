@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePostRequest;
 use App\Models\Posts;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -38,13 +40,15 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request): RedirectResponse
     {
         if ($request->user()->cannot('create', Posts::class)) {
             abort(403);
         }
 
+        $request->createPost();
 
+        return redirect(route('admin'));
     }
 
     /**
