@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import {PageProps, Post} from "@/types";
 import AdminLayout from "@/layouts/AdminLayout";
+import marked from "marked";
 import {Editor} from "@/Components/Admin/Blog/Editor";
+import matter from "gray-matter";
 import '@/userWorker';
 import {Button} from "@mui/material";
 import {Link} from "@inertiajs/react";
@@ -12,7 +14,9 @@ export default function Admin({auth, posts}: PageProps<{posts: Post[]}>) {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const post = posts.find(post => post.id === parseInt(e.currentTarget.value));
         if (post) {
+
             setPost(post);
+
         }
     }
 
@@ -31,9 +35,16 @@ export default function Admin({auth, posts}: PageProps<{posts: Post[]}>) {
                     </div>
                 </div>
                 <div className="w-full h-full rounded-lg flex flex-col items-center">
-                    <h1 className="text-3xl font-bold">Click on a post name to get started UwU</h1>
-                    <p>This'll be a preview</p>
-                    <p>Post name: {post?.title}</p>
+                    {post?.title == undefined ? (
+                        <h1 className="text-4xl font-bold">Click on a post name to get started</h1>
+                    ) : (
+                        <>
+                            <h1 className="text-3xl font-bold">{post?.title}</h1>
+                            <div>
+                                {post.document}
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </AdminLayout>
