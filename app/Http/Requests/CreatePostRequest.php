@@ -14,7 +14,7 @@ class CreatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Posts::class);
     }
 
     /**
@@ -35,7 +35,7 @@ class CreatePostRequest extends FormRequest
 
         $title = $parsedObject->title;
 
-        $file = Storage::put($title . '/document.md', $parsedObject->body());
+        $file = Storage::put($title . '/document.md', $this->body);
 
         $post = new Posts(
             [

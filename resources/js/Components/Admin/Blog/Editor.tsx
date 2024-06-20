@@ -1,9 +1,13 @@
-import { useRef, useState, useEffect, FunctionComponent } from 'react';
+import React, {useRef, useEffect} from 'react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import styles from './Editor.module.scss';
 
-export const Editor: FunctionComponent = () => {
-    const [editor, setEditor] = useState<monaco.editor.IStandaloneCodeEditor | null>(null);
+interface EditorProps {
+    editor: monaco.editor.IStandaloneCodeEditor | null,
+    setEditor: React.Dispatch<React.SetStateAction<monaco.editor.IStandaloneCodeEditor | null>>
+}
+
+export const Editor: React.FC<EditorProps> = ({editor, setEditor}) => {
     const monacoEl = useRef(null);
 
     useEffect(() => {
