@@ -36,9 +36,8 @@ export default function Admin({auth, posts}: PageProps<{posts: Post[]}>) {
                     ) : (
                         <>
                         <h1 className="text-3xl font-bold p-2 text-center">{post?.title}</h1>
-                            <div className="text-2xl p-2" dangerouslySetInnerHTML={{__html: window.md.render(post.document)}}>
+                            <div className="text-2xl p-2" dangerouslySetInnerHTML={{__html: window.md.render(post.document)}}/>
 
-                            </div>
                         </>
                     )}
                 </div>

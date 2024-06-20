@@ -16,7 +16,9 @@ class BlogController extends Controller
             return Posts::all();
         });
 
-        return Inertia::render('Blog/Blog'); //as there isn't any actual functionality yet this does not do much
+        return Inertia::render('Blog/Blog', [
+            'posts' => cache('blogs'),
+        ]); //as there isn't any actual functionality yet this does not do much
     }
 
     public function view(Request $request, $blogid): Response
