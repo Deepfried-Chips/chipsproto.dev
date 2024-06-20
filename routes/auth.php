@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\OAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminController::class, 'index'])
             ->name('admin');
 
-        Route::get('edit/{id}', [AdminController::class, 'edit'])
+        Route::get('edit/{id}', [PostController::class, 'edit'])
             ->name('admin.edit');
+
+        Route::get('new', [PostController::class, 'create'])
+            ->name('admin.create');
+
+        Route::post('new', [PostController::class, 'store']);
     });
 });

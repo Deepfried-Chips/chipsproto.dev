@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class PostController extends Controller
 {
@@ -25,11 +26,13 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         if ($request->user()->cannot('create', Posts::class)) {
             abort(403);
         }
+
+        return Inertia::render('Admin/Blog/PublisherPage');
     }
 
     /**
@@ -57,11 +60,15 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Posts $posts)
+    public function edit(Request $request, Posts $posts): Response
     {
         if ($request->user()->cannot('update', Posts::class)) {
             abort(403);
         }
+
+        return Inertia::render('Admin/Blog/EditorPage', [
+            'post' => $posts
+        ]);
     }
 
     /**

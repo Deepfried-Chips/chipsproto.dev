@@ -1,4 +1,4 @@
-import BlogLayout from "@/Components/Blog/BlogLayout";
+import BlogLayout from "@/layouts/BlogLayout";
 import {Head} from "@inertiajs/react";
 import React from "react";
 import {PageProps} from "@/types";

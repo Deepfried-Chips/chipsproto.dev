@@ -33,7 +33,9 @@ export default function BlogLayout({user, children}: PropsWithChildren<{user: Us
                         )}
                         {user && (
                             <>
-                                <Link href={route('admin')} className="rainbow-text">Super secret admin panel</Link>
+                                {user.is_admin && (
+                                    <Link href={route('admin')} className="rainbow-text">Super secret admin panel</Link>
+                                )}
                                 <Avatar alt="Profile pic" src={user.avatar} onClick={handleClick}/>
                                 <Menu
                                     anchorEl={anchorEl}

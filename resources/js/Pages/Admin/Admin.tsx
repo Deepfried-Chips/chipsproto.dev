@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {PageProps, Post} from "@/types";
-import AdminLayout from "@/Components/Admin/AdminLayout";
+import AdminLayout from "@/layouts/AdminLayout";
 import {Editor} from "@/Components/Admin/Blog/Editor";
 import '@/userWorker';
 import {Button} from "@mui/material";
@@ -18,16 +18,16 @@ export default function Admin({auth, posts}: PageProps<{posts: Post[]}>) {
 
     return (
         <AdminLayout user={auth?.user}>
-            <div className="flex h-full m-2">
+            <div className="flex h-full mt-2">
                 <div className="w-1/6 h-full bg-orange-500 rounded-lg mr-2 flex flex-col justify-between text-black">
                     <div className="overflow-auto flex justify-center items-center h-screen text-2xl font-bold">
                         {posts.map((post) => (
                             <Button key={post.id} value={post.id} onClick={handleClick}>{post.title}</Button>
                         ))}
                     </div>
-                    <div className="mb-4 flex flex-row justify-center">
+                    <div className="mb-2 flex flex-row justify-center">
                         <Button href={route('admin.edit', post?.id || 0)}>EDIT</Button>
-                        <Button href={route('admin')}>NEW</Button>
+                        <Button href={route('admin.create')}>NEW</Button>
                     </div>
                 </div>
                 <div className="w-full h-full rounded-lg flex flex-col items-center">

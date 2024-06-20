@@ -13,7 +13,7 @@ export default function Admin({auth}: PageProps) {
                 <Editor/>
                 <div
                     className="w-full bg-orange-500 p-4 mt-5 text-black rounded-lg shadow-mg flex justify-center items-center">
-                    <Button>Save</Button>
+                    <Button>Publish</Button>
                 </div>
             </div>
         </AdminLayout>
