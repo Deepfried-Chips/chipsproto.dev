@@ -1,5 +1,5 @@
-import React, {useRef, useEffect, useState, useReducer, ReactElement, useCallback} from 'react';
-import styles from './Editor.module.scss';
+import {useEffect, useState, useReducer, useCallback} from 'react';
+import { githubDark } from "./codemirror-github";
 import {basicSetup, EditorView} from "codemirror";
 import {EditorState} from "@codemirror/state"
 import {markdown} from "@codemirror/lang-markdown";
@@ -10,6 +10,12 @@ interface UseCodeMirrorOptions {
     onChange?: (code: string) => unknown;
     container?: HTMLDivElement | null;
 }
+
+type ThemeModule = {
+    theme: "light" | "dark";
+    addChangeListener: (listener: () => unknown) => unknown;
+    removeChangeListener: (listener: () => unknown) => unknown;
+};
 
 export function useCodeMirror({value: initialValueParam, onChange, container}: UseCodeMirrorOptions): {
     value: string;
@@ -43,7 +49,8 @@ export function useCodeMirror({value: initialValueParam, onChange, container}: U
                             setValue(update.state.doc.toString());
                             onChange?.(update.state.doc.toString());
                         }
-                    })
+                    }),
+                    githubDark
                 ]
             }),
             parent: container,
@@ -56,7 +63,7 @@ export function useCodeMirror({value: initialValueParam, onChange, container}: U
             setView(undefined);
         };
 
-    }, []);
+    }, [container]);
 
     const customSetValue = useCallback(
         (value: string) => {

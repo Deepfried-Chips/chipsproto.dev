@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Posts;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class CreatePostRequest extends FormRequest
@@ -35,12 +36,14 @@ class CreatePostRequest extends FormRequest
 
         $title = $parsedObject->title;
 
-        $file = Storage::put($title . '/document.md', $this->body);
+        $uuid = Uuid::uuid4();
+
+        $file = Storage::put('chipsproto/' .$uuid . '/document.md', $this->body);
 
         $post = new Posts(
             [
                 'title' => $title,
-                'document' => $title,
+                'document' => $uuid,
             ]
         );
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
 
 class Posts extends Model
@@ -22,8 +23,10 @@ class Posts extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function file(): string
+    protected function document(): Attribute
     {
-        return Storage::get($this->document . '/document.md');
+        return Attribute::make(
+            get: fn (string $value) => Storage::get('chipsproto/' . $value . '/document.md'),
+        );
     }
 }

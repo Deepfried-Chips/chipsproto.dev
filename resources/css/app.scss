@@ -24,3 +24,32 @@ a {
 .rainbow-text {
     animation: rainbow 3s linear infinite;
 }
+
+#codemirror-wrapper .cm-editor {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none !important;
+}
+
+
+#codemirror-wrapper .cm-gutters {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+#codemirror-wrapper .cm-gutterElement {
+    margin: 0;
+}
+
+#codemirror-wrapper .cm-content {
+    padding: 0;
+}
+
+#codemirror-wrapper .cm-content,
+#codemirror-wrapper .cm-gutter {
+    min-height: 800px;
+}
+
+#codemirror-wrapper .cm-scroller {
+    overflow: auto;
+}

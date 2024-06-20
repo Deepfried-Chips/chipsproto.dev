@@ -11,7 +11,7 @@ export interface Post {
     id: number;
     title: string;
     document: string;
-
+    user: User;
 }
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
