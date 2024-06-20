@@ -12,12 +12,9 @@ class BlogController extends Controller
 
     public function show(Request $request): Response
     {
-        cache()->remember('blogs', now()->addMinutes(10), function () {
-            return Posts::all();
-        });
 
         return Inertia::render('Blog/Blog', [
-            'posts' => cache('blogs'),
+            'posts' => Posts::all(),
         ]); //as there isn't any actual functionality yet this does not do much
     }
 

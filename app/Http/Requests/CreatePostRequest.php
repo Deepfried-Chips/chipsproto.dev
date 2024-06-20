@@ -47,6 +47,8 @@ class CreatePostRequest extends FormRequest
             ]
         );
 
+        cache()->forget('posts');
+
         $this->user()->posts()->save($post);
 
     }

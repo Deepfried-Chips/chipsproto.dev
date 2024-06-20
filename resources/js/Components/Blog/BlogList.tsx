@@ -8,7 +8,7 @@ export default function BlogList({posts, setPost}: {posts: Post[], setPost: (id:
             {posts.map((post) => {
 
                 return (
-                    <p className="hover:underline cursor-pointer" key={post.id} onClick={() => { setPost(post.id) }}>{post.title}</p>
+                    <p className="hover:underline cursor-pointer m-3" key={post.id} onClick={() => { setPost(post.id) }}>{post.title}</p>
                 )
             })}
         </div>
