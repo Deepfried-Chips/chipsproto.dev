@@ -18,7 +18,7 @@ class AdminController extends Controller
             abort(403);
         }
         return Inertia::render('Admin/Admin', [
-            'posts' => Posts::all(),
+            'posts' => Posts::orderBy('created_at', 'DESC')->get(),
         ]);
     }
 }

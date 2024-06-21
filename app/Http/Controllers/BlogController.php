@@ -14,7 +14,7 @@ class BlogController extends Controller
     {
 
         return Inertia::render('Blog/Blog', [
-            'posts' => Posts::all(),
+            'posts' => Posts::orderBy('created_at', 'DESC')->get(),
         ]); //as there isn't any actual functionality yet this does not do much
     }
 
