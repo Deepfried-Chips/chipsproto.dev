@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', [PostController::class, 'edit'])
             ->name('admin.edit');
 
+        Route::post('edit', [PostController::class, 'update'])
+            ->name('admin.editpost');
+
         Route::get('new', [PostController::class, 'create'])
             ->name('admin.create');
 

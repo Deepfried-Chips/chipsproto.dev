@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Posts;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,14 +16,14 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, int $postId)
+    public function index(Request $request, int $postId): Posts
     {
 
         if ($request->user()->cannot('view', Posts::class)) {
             abort(403);
         }
 
-        $post = Posts::find($postId);
+        return Posts::find($postId);
     }
 
     /**
@@ -64,25 +65,29 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Posts $posts): Response
+    public function edit(Request $request, int $id): Response
     {
         if ($request->user()->cannot('update', Posts::class)) {
             abort(403);
         }
 
         return Inertia::render('Admin/Blog/EditorPage', [
-            'post' => $posts
+            'post' => Posts::find($id),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Posts $posts)
+    public function update(UpdatePostRequest $request)
     {
         if ($request->user()->cannot('update', Posts::class)) {
             abort(403);
         }
+
+        $request->editPost();
+
+        return redirect(route('admin'));
     }
 
     /**
